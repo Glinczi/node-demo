@@ -1,0 +1,21 @@
+{
+  "name": "node-demo",
+  "version": "1.0.0",
+  "description": "this is a study demp for node",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=dev node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "keywords": [
+    "node"
+  ],
+  "author": "xiaozhi",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.12.7",
+    "cross-env": "^7.0.3",
+    "nodemon": "^3.1.0"
+  }
+}

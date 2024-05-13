@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <!-- 具体ejs相关的语法可以看官方文档 -->
+    <title>markdown to html</title>
+    <link
+      rel="stylesheet"
+      href="./index.css"
+    />
+  </head>
+  <body>
+    <h1>React</h1>
+<h2>React 基础</h2>
+<h3>Hello_React</h3>
+<h3>虚拟 DOM 创建的两种方式</h3>
+<ol>
+<li>使用 <code>JSX</code> 创建虚拟 DOM</li>
+<li>使用 <code>JS</code> 创建虚拟 DOM</li>
+</ol>
+<p>总结: <code>JSX</code> 创建虚拟 <code>DOM</code> 就是 <code>JS</code> 创建虚拟 <code>DOM</code> 的一种语法糖</p>
+<h3>虚拟 DOM 和真实 DOM</h3>
+<ul>
+<li>虚拟 DOM 就是一个对象</li>
+<li>虚拟 DOM 相比于真实 DOM 属性值少很多,显得更轻巧</li>
+</ul>
+<h3>JSX 的语法规则</h3>
+<ol>
+<li>定义虚拟 DOM 的时候,不要写引号</li>
+<li>标签中混入 JS 表达式时要用{} (记住这里是表达式 不是代码块 代码片段)</li>
+</ol>
+<p>一个表达式能产生一个值,可以放在需要放值的地方</p>
+<ol start="3">
+<li>样式的类名指定不要使用 class,要用 className</li>
+<li>内联样式 要使用 style={{key:value}} 的形式去写 最外面一个{}代表这个是 js 里面的{}表示这是一个对象</li>
+<li>只有一个根标签</li>
+<li>对于单标签必须要闭合</li>
+<li>标签首字母</li>
+</ol>
+<ul>
+<li>首字母是小写字母开头,则将标签转换成 html 中对应的标签名 如果不存在对应的标签名,则报错</li>
+<li>首字母是大写字母开头,react 就去渲染对应的组件,组件未定义则报错</li>
+</ul>
+<h3>JSX 小练习</h3>
+<p>实现动态渲染列表</p>
+<blockquote>
+<p>JSX 中的{}可以自动遍历数组,但是没有办法遍历对象</p>
+</blockquote>
+<h3>React 定义组件的方式</h3>
+<ol>
+<li>通过函数的方式创建组件<blockquote>
+<p>注意:组件名必须大写,组件函数在使用的时候要写成标签的形式</p>
+</blockquote>
+</li>
+<li>通过类的方式创建组件<blockquote>
+<p>注意:必须通过 extends 关键字继承 React.Component 这个类
+组件内部必须有 render 函数</p>
+</blockquote>
+</li>
+</ol>
+<h3>组件实例的三大属性</h3>
+<h4>state</h4>
+<ol>
+<li><code>state</code> 的作用</li>
+</ol>
+<p>state 就类似 VUE 中的 data,用来定义一些变量控制页面的显示状态</p>
+<ol start="2">
+<li>如何给渲染的标签添加点击事件?</li>
+</ol>
+<p>React 自己重写了事件关键字 比如 onclick =&gt; onClick onblur =&gt; onBlur</p>
+<ol start="3">
+<li><p>关于类中 this 指向问题</p>
+</li>
+<li><p>如何修改 state 中的值?</p>
+</li>
+</ol>
+<p>不能直接通过读取对象属性的方法去修改 state 中的值,需要借助官方提供的内置 API setState()方法去修改,
+方法的参数需要传递一个对象,将 state 中需要修改的值传递进去,不需要修改的值可以不传递,这种修改是一种
+合并修改,不会覆盖原有的 state 对象</p>
+<ol start="5">
+<li>简化 State 的写法</li>
+</ol>
+<p>组件内部使用的变量可以不通过构造器函数 constructor 来创建 可以通过赋值运算直接追加到类里面</p>
+<p>类中定义的函数,可以通过箭头函数的形式将函数中的 this 指向创造的 class 类</p>
+<h4>props</h4>
+<ol>
+<li>props 的作用和基本使用</li>
+</ol>
+<p>作用: props 主要用于从组件外部传递值到组件内部
+使用: 通过给标签添加属性和属性值的方式,可以将外部的定义的数据传递到组件内部
+注意: props 是只读的,不要在内部修改</p>
+<ol start="2">
+<li>如何批量导入 props 值</li>
+</ol>
+<p>可以在组件标签上通过 {...}展开运算符来实现</p>
+<ol start="3">
+<li>如何限制 props 的值</li>
+</ol>
+<p>React 拆分出一个单独的 propTypes 的库,专门来限制 props 的值</p>
+<p>类名.propTyps 可以限制 props 的类型以及是否是必传项
+类名.defaultProps 可以设定 props 在未传下的默认值</p>
+<pre><code class="language-javascript">// 1. 在构造函数身上有一个属性propTypes设置props的限制规则
+类名.propTypes = {
+  // 顺序不能变  类型需要小写 string number func
+  name: PropTypes.string.isRequired, // 对名字进行限制 必须是字符串 且必填
+  age: PropTypes.number,
+};
+// 2. defaultProps用来设置默认值
+类名.defaultProps = {
+  age: 18, // 年龄默认值
+  sex: &#39;男&#39;,
+};
+</code></pre>
+<ol start="4">
+<li>props 的简写形式</li>
+</ol>
+<p>上面两种写法都是给类添加了一个属性,可以将属性直接写在定义类的里面
+(但是直接写是给类的实例对象添加属性,需要添加 static)</p>
+<p>这里要区分给类添加属性和给类的实例对象添加属性的区别</p>
+<pre><code class="language-javascript">class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  spake() {
+    console.log(`我的名字叫${this.name},年龄${this.age}`);
+  }
+  static id = 11;
+}
+
+// spake不能直接通过类名去调用,只能通过构造的实例对象去访问
+Person.spake(); // undefined
+// 如果给spake添加static属性的时候就可以直接通过类名访问
+Person.spake();
+Person.id; // 11
+</code></pre>
+<ol start="5">
+<li>类式组件构造器和 props</li>
+</ol>
+<p>尽量不要在类式组件中使用 constructor</p>
+<ol start="6">
+<li>函数式组件使用 props</li>
+</ol>
+<p>旧版本中,函数式组件只能处理 props,是通过函数的形参接收,然后处理的,但是不能处理 state 和 refs
+新版本中引入 hook 后可以处理(后续)</p>
+<h4>refs</h4>
+<ol>
+<li>ref 的作用和基本使用</li>
+</ol>
+<p>作用: 通过给 DOM 元素身上绑定 ref 属性,可以为当前属性做标识,从而可以在组件实例身上拿到对应的数据
+使用: 组件实例身上有一个 refs 属性,里面存放了做过标识的 DOM 元素</p>
+<ol start="2">
+<li>使用回调函数的形式访问 ref</li>
+</ol>
+<p>直接使用字符串形式创建 ref 的方式已经过时,现在主要通过在 ref 上使用回调函数的形式创建 ref</p>
+<pre><code class="language-javascript">class Demo extends React.Component {
+  showData1 = () =&gt; {
+    // 通过回调函数的形式将对应的节点挂载到组件实例身上
+    const { input1 } = this;
+    alert(input1.value);
+  };
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;input
+          ref={(elementNode) =&gt; {
+            this.input1 = elementNode;
+          }}
+          type=&quot;text&quot;
+          placeholder=&quot;请输入内容&quot;
+        /&gt;
+        &lt;button onClick={this.showData1}&gt;点击我出提示&lt;/button&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+<ol start="3">
+<li>关于回调函数访问 ref 的执行次数的问题</li>
+</ol>
+<p>如果 ref 回调函数是以内联函数的方式定义的,在更新过程中它会被执行两次，第一次传入参数 null,然后第二次会传入参数 DOM 元素。这是因为在每次渲染时会创建一个新的函数实例,所以 React 清空旧的 ref 并且设置新的。通过将 ref 的回调函数定义成 class 的绑定函数的方式可以避免上述问题,但是大多数情况下它是无关紧要的。</p>
+<ol start="4">
+<li>createRef</li>
+</ol>
+<p>React 自身上有一个 API -- createRef,用于访问 ref</p>
+<pre><code class="language-javascript">class Demo extends React.Component {
+  showData1 = () =&gt; {
+    let element = this.setInput.current;
+    alert(element.value);
+  };
+  showData2 = () =&gt; {};
+  // React 身上有一个API 用于创建 ref (目前最推荐)
+  setInput = React.createRef();
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;input
+          ref={this.setInput}
+          type=&quot;text&quot;
+          placeholder=&quot;请输入内容&quot;
+        /&gt;
+        &lt;button onClick={this.showData1}&gt;点击我出提示&lt;/button&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+<h3>React 中的事件处理</h3>
+<p>1.形式类似 onXxxx（区别大小写）
+a. react 自己封装的事件 -- 为了更好的兼容性
+b. 事件一般都是依靠事件委托，绑定在最外层的元素身上 -- 为了高效 2.可以通过 event.target 拿到绑定事件元素的相关 DOM 属性 -- 这样是为了减少 ref 的使用
+！具体通过 event.target 如何实现和 ref 相同效果的例子如下</p>
+<pre><code class="language-javascript">class Demo extends React.Component {
+  showData2 = (event) =&gt; {
+    // 事件回调函数自带的event参数
+    alert(event.target.value); // NEW 这样就完全避免了使用ref，
+    // 这种方式主要还是适用于事件回调函数和你想触发的元素绑定在一起的
+  };
+  setInput = React.createRef();
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;input
+          onBlur={this.showData2}
+          type=&quot;text&quot;
+          placeholder=&quot;请输入需要提示的内容&quot;
+        /&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+ReactDOM.render(&lt;Demo /&gt;, document.querySelector(&#39;#box1&#39;));
+</code></pre>
+<h3>React 收集表单数据</h3>
+<h4>非受控组件和受控组件</h4>
+<ol>
+<li>非受控组件：（现用现取）通过 ref 获取 DOM 节点，获取相应的值</li>
+<li>受控组件：通过 state 存储表单组件的值，通过 setState 对值修改，不涉及到 ref</li>
+</ol>
+<pre><code class="language-javascript">// 受控组件
+class Demo extends React.Component {
+  // TIPS 记住要初始化state的值
+  state = {
+    userName: &#39;&#39;,
+    userPassword: &#39;&#39;,
+  };
+  handlerSubmit = (event) =&gt; {
+    event.preventDefault(); // 阻止默认事件
+    const { userName, userPassword } = this.state;
+    // 注意 受控组件就不是通过ref来获取节点数据了，而是通过state来
+    alert(`用户名：${userName} 密码：${userPassword}`);
+  };
+
+  setUserName = (event) =&gt; {
+    // 由state来保存表单数据  通过setState来修改数据
+    this.setState({
+      userName: event.target.value,
+    });
+  };
+  setUserPwd = (event) =&gt; {
+    // 由state来保存表单数据  通过setState来修改数据
+    this.setState({
+      userPassword: event.target.value,
+    });
+  };
+  render() {
+    return (
+      &lt;form onSubmit={this.handlerSubmit}&gt;
+        用户名：
+        &lt;input
+          onChange={this.setUserName}
+          type=&quot;text&quot;
+          placeholder=&quot;请输入用户名&quot;
+          name=&quot;userName&quot;
+        /&gt;
+        密码：
+        &lt;input
+          onChange={this.setUserPwd}
+          type=&quot;password&quot;
+          name=&quot;userPassword&quot;
+          placeholder=&quot;请输入密码&quot;
+        /&gt;
+        &lt;button&gt;登录&lt;/button&gt;
+      &lt;/form&gt;
+    );
+  }
+}
+ReactDOM.render(&lt;Demo /&gt;, document.querySelector(&#39;#box1&#39;));
+</code></pre>
+<pre><code class="language-javascript">// 非受控组件 通过DOM节点获取数据的方式属于非受控
+class Demo extends React.Component {
+  handlerSubmit = (event) =&gt; {
+    event.preventDefault(); // 阻止默认事件
+    const { userName, userPassword } = this;
+    // 注意 这里事读取DOM的值，需要拿到DOM节点后通过 .value获取
+    alert(`用户名：${userName.value} 密码：${userPassword.value}`);
+  };
+  render() {
+    return (
+      &lt;form onSubmit={this.handlerSubmit}&gt;
+        用户名：
+        &lt;input
+          ref={(cN) =&gt; {
+            this.userName = cN;
+          }}
+          type=&quot;text&quot;
+          placeholder=&quot;请输入用户名&quot;
+          name=&quot;userName&quot;
+        /&gt;
+        密码：
+        &lt;input
+          ref={(cN) =&gt; {
+            this.userPassword = cN;
+          }}
+          type=&quot;password&quot;
+          name=&quot;userPassword&quot;
+        /&gt;
+        &lt;button&gt;登录&lt;/button&gt;
+      &lt;/form&gt;
+    );
+  }
+}
+ReactDOM.render(&lt;Demo /&gt;, document.querySelector(&#39;#box1&#39;));
+</code></pre>
+<h5>函数柯里化</h5>
+<p>高阶函数：一个函数出现一下两种情况的一种，就算是高阶函数</p>
+<ol>
+<li>若函数 A 接收的参数还是一个函数，就称之为高阶函数</li>
+<li>若函数 A 的返回值依然是一个函数，也可以称之为高阶函数</li>
+</ol>
+<p>函数的柯里化：通过函数继续返回函数的方式，实现多次接收参数最后统一处理的函数编码形式</p>
+<p>这里处理表单数据需要用到函数柯里化，为的是在处理多个表单元素的时候可以公用一个函数</p>
+<h3>组件的生命周期</h3>
+<h4>页面卸载</h4>
+<pre><code class="language-javascript">ReactDOM.unmountComponentAtNode(&#39;选中的节点&#39;);
+// 示例：卸载组件(只能选中组件挂载位置的dom)
+ReactDOM.unmountComponentAtNode(document.querySelector(&#39;#box1&#39;));
+</code></pre>
+<h4>页面挂载只执行一次 DidMount</h4>
+<pre><code class="language-javascript">// 组件挂载完毕 类似mounted
+componentDidMount() {}
+</code></pre>
+<h4>组件卸载之前 WillUnmount</h4>
+<pre><code class="language-javascript">// 组件将要卸载 类似beforeDestroy
+componentWillUnmount() {}
+</code></pre>
+<h4>旧版生命周期总结</h4>
+<p>初始化阶段：由 <code>ReactDom.render() </code> 触发 -- 初次渲染</p>
+<ol>
+<li><code>constructor()</code></li>
+<li><code>componentWillMount()</code></li>
+<li><code>render()</code></li>
+<li><code>componentDidMount()</code></li>
+</ol>
+<p>更新阶段：由组件内部 <code>this.setState()</code> 或使用强制更新 <code>forceUpdata()</code></p>
+<ol>
+<li><code>shouldComponentUpdate()</code> -- <code>forceUpdata()</code>不经过这个周期钩子 这个周期钩子需要一个布尔类型的返回值，默认 <code>true</code></li>
+<li><code>componentWillUpdate()</code></li>
+<li><code>render()</code></li>
+<li><code>componentDidUpdate()</code></li>
+</ol>
+<p>卸载组件：由 <code>ReactDOM.unmountComponentAtNode()</code>触发</p>
+<ol>
+<li><code>componentWillUnmount()</code></li>
+</ol>
+<h4>新版生命周期</h4>
+
+  </body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "cli-demo",
+  "version": "1.0.0",
+  "description": "1. 自定义一个命令\r    a. 类似 -v --help create 命令行交互工具\r 2. 去下载模板\r 3.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bin": {
+    "template-cli": "src/index.js"
+  },
+  "dependencies": {
+    "@types/node": "^20.12.7",
+    "commander": "^12.0.0",
+    "download-git-repo": "^3.0.2",
+    "inquirer": "^9.2.20",
+    "ora": "^8.0.1"
+  }
+}
