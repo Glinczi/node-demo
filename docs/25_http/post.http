@@ -1,0 +1,10 @@
+# 请求方式 请求地址 HTTP协议版本
+POST http://localhost:8080/login HTTP/1.1
+
+# 请求头
+Content-Type: "application/json"
+
+# 请求体
+{
+  "name":"xiaozhi"
+}
