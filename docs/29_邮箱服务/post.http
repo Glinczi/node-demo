@@ -1,0 +1,8 @@
+POST http://localhost:3000/send/email HTTP/1.1
+content-type: application/json
+
+{
+  "to": "邮箱地址",
+  "subject": "测试邮件",
+  "text": "这是一封通过nodemailder发送的邮件"
+}
