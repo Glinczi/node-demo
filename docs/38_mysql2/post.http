@@ -1,0 +1,7 @@
+POST http://localhost:3000/userInfo/add HTTP/1.1
+Content-Type: application/json
+
+{
+  "userName":"hh5",
+  "age": 30
+}
