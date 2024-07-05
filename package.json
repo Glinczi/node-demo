@@ -4,17 +4,15 @@
   "description": "this is a study demp for node",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=dev node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "ts-node index.ts"
   },
-  "type": "module",
   "keywords": [
     "node"
   ],
   "author": "xiaozhi",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^20.12.12",
+    "@types/node": "^20.14.9",
     "axios": "^1.7.2",
     "browser-sync": "^3.0.2",
     "commander": "^12.1.0",
