@@ -30,6 +30,7 @@
     "nodemailer": "^6.9.14",
     "nodemon": "^3.1.0",
     "ora": "^8.0.1",
+    "reflect-metadata": "^0.2.2",
     "zlib": "^1.0.5"
   }
 }
