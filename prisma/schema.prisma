@@ -26,6 +26,6 @@ model User {
 model Car {
   id        Int    @id @default(autoincrement())
   brand     String
-  driver_id Int @unique
+  driver_id Int
   driver    User   @relation(fields: [driver_id], references: [id])
 }

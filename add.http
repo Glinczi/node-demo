@@ -1,9 +1,17 @@
-POST http://localhost:3000/add HTTP/1.1
+POST http://localhost:3000/user/add HTTP/1.1
 Content-Type: application/json
 
 {
   "userName": "小志",
   "age": 28,
   "email": "itsXz@outlook.com",
-  "password": "123456"
+  "password": "123456",
+  "cars": [
+    {
+      "brand": "BMW"
+    },
+    {
+      "brand": "Audi"
+    }
+  ]
 }
